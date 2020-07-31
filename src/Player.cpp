@@ -2,7 +2,8 @@
 
 auto Player::Update(std::vector<Bullet>& bullets) -> void
 {
-	Character::Update(bullets);
+	if(!bullets.empty())
+		Character::Update(bullets);
 
 	if (IsAlive())
 	{
@@ -11,10 +12,10 @@ auto Player::Update(std::vector<Bullet>& bullets) -> void
 			switch (WindowManager::GetEvent().key.code)
 			{
 			case sf::Keyboard::Key::Left:
-				MoveSprite(-3.f);
+				MoveSprite(-5.f);
 				break;
 			case sf::Keyboard::Key::Right:
-				MoveSprite(3.f);
+				MoveSprite(5.f);
 				break;
 			}
 		}
