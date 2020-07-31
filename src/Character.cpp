@@ -4,20 +4,17 @@ Character::Character(const sf::Texture& texture, float xPos, float yPos) : m_IsA
 {
 	m_Sprite.setTexture(texture);
 	m_Sprite.setOrigin(m_Sprite.getGlobalBounds().width, m_Sprite.getGlobalBounds().height);
-	m_Sprite.setPosition(WindowManager::MapPixelsToCoords(xPos, yPos));
+	m_Sprite.setPosition(WindowManager::MapPixelsToCoords(WindowManager::PercentsToPixelsX(xPos), WindowManager::PercentsToPixelsY(yPos)));
 }
 
 auto Character::Update(std::vector<Bullet>& bullets) -> void
 {
-	if (!bullets.empty())
+	for (unsigned int i = 0; i < bullets.size(); i++)
 	{
-		for (unsigned int i = 0; i < bullets.size(); i++)
+		if (m_Sprite.getGlobalBounds().intersects(bullets[i].GetRectangleShape().getGlobalBounds()))
 		{
-			if (m_Sprite.getGlobalBounds().intersects(bullets[i].GetRectangleShape().getGlobalBounds()))
-			{
-				m_IsAlive = false;
-				bullets[i].SetExistsBool(false);
-			}
+			m_IsAlive = false;
+			bullets[i].SetExistsBool(false);
 		}
 	}
 }
