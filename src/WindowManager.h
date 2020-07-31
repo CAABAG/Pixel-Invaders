@@ -13,7 +13,7 @@ public:
 	WindowManager(WindowManager const&)                     = delete;
 	void operator=(WindowManager const&)                    = delete;
 
-	inline static auto Create(int width, int height)        -> void { GetWindow().create(sf::VideoMode(width, height), "Pong2D"); GetWindow().setVerticalSyncEnabled(true); }
+	inline static auto Create(int width, int height)        -> void { GetWindow().create(sf::VideoMode(width, height), "Pixel Invaders"); GetWindow().setVerticalSyncEnabled(true); }
 	inline static auto PollEvent()                          -> bool { return GetWindow().pollEvent(GetEvent()); }
 	inline static auto CloseWindow()                        -> void { GetWindow().close(); }
 	inline static auto DisplayWindow()                      -> void { GetWindow().display(); }
