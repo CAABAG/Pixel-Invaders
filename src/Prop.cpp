@@ -4,7 +4,7 @@ Prop::Prop(float width, float height, float xPos, float yPos) : m_Exists(true)
 {
 	m_Rectangle.setSize({ width, height });
 	m_Rectangle.setFillColor(sf::Color::White);
-	m_Rectangle.setOrigin(m_Rectangle.getGlobalBounds().width, m_Rectangle.getGlobalBounds().height);
+	m_Rectangle.setOrigin( width / 2, height / 2 );
 	m_Rectangle.setPosition(WindowManager::MapPixelsToCoords(xPos, yPos));
 }
 

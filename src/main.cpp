@@ -25,9 +25,21 @@ int main()
 			}
 		}
 
+		if (!bullets.empty())
+		{
+			for (Bullet& element : bullets)
+				element.Update();
+		}
+
 		player.Update(bullets);
 
 		WindowManager::ClearWindow();
+
+		if (!bullets.empty())
+		{
+			for (Bullet& element : bullets)
+				element.Render();
+		}
 
 		player.Render();
 

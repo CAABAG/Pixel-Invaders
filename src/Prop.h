@@ -10,6 +10,7 @@ protected:
 	bool                                                        m_Exists;
 
 	Prop(float width, float height, float xPos, float yPos);
+
 	auto Render()                                               -> void;
 
 public:

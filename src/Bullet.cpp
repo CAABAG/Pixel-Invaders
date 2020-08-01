@@ -13,6 +13,9 @@ auto Bullet::Update() -> void
 			m_Rectangle.move(0.f, 2.f);
 			break;
 		}
+
+		if (GetRectangleShape().getPosition().y < 0 || GetRectangleShape().getPosition().y > WindowManager::GetWindow().getSize().y)
+			m_Exists = false;
 	}
 }
 

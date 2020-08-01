@@ -10,4 +10,5 @@ public:
 
 	auto Update(std::vector<Bullet>& bullets)                                                   -> void;
 	auto Render()                                                                               -> void;
+	auto Shoot(std::vector<Bullet>& bullets)                                                    -> void override;
 };

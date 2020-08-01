@@ -3,7 +3,7 @@
 Character::Character(const sf::Texture& texture, float xPos, float yPos) : m_IsAlive(true)
 {
 	m_Sprite.setTexture(texture);
-	m_Sprite.setOrigin(m_Sprite.getGlobalBounds().width, m_Sprite.getGlobalBounds().height);
+	m_Sprite.setOrigin(m_Sprite.getGlobalBounds().width / 2, m_Sprite.getGlobalBounds().height / 2);
 	m_Sprite.setPosition(WindowManager::MapPixelsToCoords(WindowManager::PercentsToPixelsX(xPos), WindowManager::PercentsToPixelsY(yPos)));
 }
 
