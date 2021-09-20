@@ -1,2 +1,2 @@
 # Pixel-Invaders
-Space Invaders remade in C++ and SFML.
+Space Invaders remade in Godot.
