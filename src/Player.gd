@@ -3,6 +3,8 @@ extends Area2D
 var screen_size
 var movement = 0
 var speed = 90
+var shot_timestamp = 0
+export (PackedScene) var Bullet
 
 enum Direction {RIGHT, LEFT}
 
@@ -47,10 +49,16 @@ func process_shooting():
 	if Input.is_key_pressed(KEY_CONTROL): should_shoot = true
 	if Input.is_mouse_button_pressed(BUTTON_LEFT): should_shoot = true
 	if (should_shoot):
-		var b = preload("res://res/scenes/Bullet.tscn").instance()
-		#owner.add_child(b)
-		add_child(b)
+		if OS.get_ticks_msec() - shot_timestamp < 100:
+			return
+
+		shot_timestamp = OS.get_ticks_msec()
+		var b = Bullet.instance()
+		b.position.x = position.x
+		var half_height = get_node("AnimatedSprite").get_sprite_frames().get_frame($AnimatedSprite.animation,0).get_size().y/2
+		b.position.y = position.y - half_height
 		b.is_player_owned = true
+		get_tree().get_root().add_child(b)
 
 func process_movement():
 	var is_right_pressed = Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D)
