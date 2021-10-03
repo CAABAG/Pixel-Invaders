@@ -2,7 +2,7 @@ extends Area2D
 
 signal destroy
 
-var is_player_owned
+var is_going_up
 var speed = 500
 
 func _draw():
@@ -12,7 +12,7 @@ func _ready():
 	update()
 
 func _physics_process(delta):
-	if is_player_owned:
+	if is_going_up:
 		position.y -= speed * delta
 	else:
 		position.y += speed * delta

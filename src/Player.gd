@@ -6,6 +6,7 @@ var speed = 90
 var shot_timestamp = 0
 var half_height
 export (PackedScene) var Bullet
+export var shooting_interval = 200
 
 enum Direction {RIGHT, LEFT}
 
@@ -51,13 +52,13 @@ func process_shooting():
 	if Input.is_key_pressed(KEY_CONTROL): should_shoot = true
 	if Input.is_mouse_button_pressed(BUTTON_LEFT): should_shoot = true
 	if (should_shoot):
-		if OS.get_ticks_msec() - shot_timestamp < 100:
+		if OS.get_ticks_msec() - shot_timestamp < shooting_interval:
 			return
 		shot_timestamp = OS.get_ticks_msec()
 		var b = Bullet.instance()
 		b.position.x = position.x
 		b.position.y = position.y - half_height
-		b.is_player_owned = true
+		b.is_going_up = true
 		get_tree().get_root().add_child(b)
 
 func process_movement():
