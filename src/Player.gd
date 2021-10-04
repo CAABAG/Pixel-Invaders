@@ -1,5 +1,7 @@
 extends Area2D
 
+signal player_hit
+
 var screen_size
 var movement = 0
 var speed = 90
@@ -67,6 +69,9 @@ func process_movement():
 	process_side_movement(is_right_pressed, Direction.RIGHT)
 	process_side_movement(is_left_pressed, Direction.LEFT)
 	process_no_movement(is_right_pressed, is_left_pressed)
+	if (get_global_position().x <= 0 or get_global_position().x >= screen_size.x or
+		get_global_position().y <= 0 or get_global_position().y >= screen_size.y):
+			emit_signal("player_hit")
 
 func _process(delta):
 	process_movement()
@@ -75,3 +80,6 @@ func _process(delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	
 	$AnimatedSprite.animation = "default"
+
+func _on_Player_player_hit():
+	queue_free()
