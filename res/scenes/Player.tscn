@@ -26,3 +26,5 @@ frames = SubResource( 1 )
 polygon = PoolVector2Array( -0.110153, -24.8349, -7.97627, -18.2798, -8.16356, -2.73486, -27.0797, 15.8067, -10.5983, 15.6194, -10.7856, 24.422, 10.1907, 23.8601, 10.0034, 16.3685, 27.0467, 15.8067, 8.6924, -3.10944, 8.87968, -17.7179 )
 
 [node name="Bullet" parent="." instance=ExtResource( 3 )]
+
+[connection signal="player_hit" from="." to="." method="_on_Player_player_hit"]
