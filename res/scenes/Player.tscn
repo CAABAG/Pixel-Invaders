@@ -27,4 +27,6 @@ polygon = PoolVector2Array( -0.110153, -24.8349, -7.97627, -18.2798, -8.16356, -
 
 [node name="Bullet" parent="." instance=ExtResource( 3 )]
 
-[connection signal="player_hit" from="." to="." method="_on_Player_player_hit"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
