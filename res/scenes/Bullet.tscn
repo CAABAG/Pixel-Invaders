@@ -14,5 +14,8 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
-[connection signal="destroy" from="." to="." method="_on_Bullet_destroy"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0, 0.11149 )
+scale = Vector2( 1, 1.99225 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

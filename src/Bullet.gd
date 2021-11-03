@@ -1,7 +1,5 @@
 extends Area2D
 
-signal destroy
-
 var is_going_up
 var speed = 500
 
@@ -16,14 +14,6 @@ func _physics_process(delta):
 		position.y -= speed * delta
 	else:
 		position.y += speed * delta
-	if get_global_position().y < 0 or get_viewport_rect().size.y < position.y:
-		emit_signal('destroy')
 
-func _on_Bullet_body_entered(body):
-	if body.is_in_group('aliens'):
-		body.queue_free()
-	emit_signal('destroy')
-
-
-func _on_Bullet_destroy():
+func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
