@@ -10,3 +10,4 @@ func _ready():
 	alien.position.x = screen_size.x/2
 	alien.position.y = screen_size.y/5
 	add_child(alien)
+	alien.add_to_group("aliens")
