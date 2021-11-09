@@ -4,7 +4,9 @@
 [ext_resource path="res://res/scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Main.gd" type="Script" id=3]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=[
+"aliens",
+]]
 script = ExtResource( 3 )
 Enemy = ExtResource( 2 )
 
