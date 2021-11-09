@@ -13,10 +13,6 @@ config_version=4
 config/name="Pixel-Invaders"
 config/icon="res://res/img/icon.png"
 
-[debug]
-
-gdscript/warnings/treat_warnings_as_errors=true
-
 [display]
 
 window/size/width=640
