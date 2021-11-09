@@ -12,7 +12,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 12.3365
+radius = 11.9945
 
 [node name="Enemy" type="Area2D"]
 gravity = 0.0
