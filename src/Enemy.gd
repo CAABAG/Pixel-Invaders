@@ -22,12 +22,12 @@ func swing():
 	match direction:
 		-1:
 			if get_global_position().x > min_x_pos:
-				movement -= acceleration(.1)
+				movement -= acceleration(.2)
 				return
 			direction = 1
 		1:
 			if get_global_position().x < max_x_pos:
-				movement += acceleration(.1)
+				movement += acceleration(.2)
 				return
 			direction = -1
 
