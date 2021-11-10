@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://res/img/Invader.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemy.gd" type="Script" id=3]
@@ -11,18 +11,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 12.3365
-
 [node name="Enemy" type="Area2D"]
 gravity = 0.0
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12.0029, -11.5108, -10.8096, -11.5108, -8.51154, -8.50558, -3.4292, -11.9969, 3.24412, -11.9527, 8.45904, -8.3288, 10.8013, -11.4224, 12.0388, -11.4224, 11.9504, 11.9563, 10.5804, 11.9563, 6.38191, 7.27176, 6.55869, 11.0725, 5.45383, 12.0005, 3.73026, 11.9563, 0.504082, 8.4208, -0.335609, 8.465, -3.69437, 11.9563, -5.32955, 11.9563, -6.30183, 11.1167, -6.43441, 7.36014, -10.6329, 12.0005, -12.0029, 12.0447 )
