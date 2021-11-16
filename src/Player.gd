@@ -74,6 +74,8 @@ func _process(delta):
 	position.x += movement * delta
 	$AnimatedSprite.animation = "default"
 
-
 func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
+func hit():
 	queue_free()
