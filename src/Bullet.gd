@@ -23,3 +23,7 @@ func _on_Bullet_area_entered(area):
 		if is_going_up == true:
 			area.hit()
 			queue_free()
+	else:
+		if is_going_up == false:
+			area.hit()
+			queue_free()
