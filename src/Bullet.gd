@@ -24,7 +24,7 @@ func _on_Bullet_area_entered(area):
 			area.hit()
 			get_tree().get_root().get_node("Main").score += 100
 			queue_free()
-	else:
+	elif area.is_in_group("player"):
 		if is_going_up == false:
 			area.hit()
 			queue_free()
