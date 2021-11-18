@@ -2,6 +2,7 @@ extends Node2D
 
 export (PackedScene) var Enemy
 
+var score = 0
 var screen_size
 
 func _ready():

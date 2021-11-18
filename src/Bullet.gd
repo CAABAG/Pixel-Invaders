@@ -22,6 +22,7 @@ func _on_Bullet_area_entered(area):
 	if area.is_in_group("aliens"):
 		if is_going_up == true:
 			area.hit()
+			get_tree().get_root().get_node("Main").score += 100
 			queue_free()
 	else:
 		if is_going_up == false:
