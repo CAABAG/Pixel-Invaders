@@ -60,8 +60,7 @@ func process_side_movement(is_left_pressed, is_right_pressed):
 		else:
 			movement += acceleration(.5)
 		return
-	if not is_left_pressed and not is_right_pressed:
-		stop_player()
+	stop_player()
 
 func process_movement():
 	var is_right_pressed = Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D)

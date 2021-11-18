@@ -6,6 +6,7 @@ const speed = 80
 const max_speed = 160
 const min_shooting_interval = 1
 const max_shooting_interval = 3
+var swing_range = 30
 var direction = -1 # -1 = left, 1 = right
 var movement = 0
 
@@ -14,6 +15,9 @@ var min_x_pos
 var max_x_pos
 
 func _ready():
+	var screen_size = get_viewport_rect().size
+	min_x_pos = screen_size.x/2 - swing_range
+	max_x_pos = screen_size.x/2 + swing_range
 	position.x = (min_x_pos + max_x_pos)/2
 	add_child(shot_timer)
 	shot_timer.connect("timeout", self, "_shoot")
