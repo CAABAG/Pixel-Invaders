@@ -13,3 +13,4 @@ Enemy = ExtResource( 2 )
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 1 )]
+position = Vector2( 320, 700 )
