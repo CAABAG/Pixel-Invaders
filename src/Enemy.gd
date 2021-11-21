@@ -9,7 +9,6 @@ const max_shooting_interval = 3
 var swing_range = 30
 var direction = -1 # -1 = left, 1 = right
 var movement = 0
-
 var shot_timer = Timer.new()
 var min_x_pos
 var max_x_pos
