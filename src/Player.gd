@@ -1,6 +1,5 @@
 extends Area2D
 
-var screen_size
 var movement = 0
 var speed = 90
 var shot_timestamp = 0
@@ -9,9 +8,6 @@ export (PackedScene) var Bullet
 export var shooting_interval = 200
 
 func _ready():
-	screen_size = get_viewport_rect().size
-	position.x = screen_size.x/2
-	position.y = screen_size.y - screen_size.y/9
 	half_height = get_node("AnimatedSprite").get_sprite_frames().get_frame($AnimatedSprite.animation,0).get_size().y/2
 
 func shoot():
@@ -60,8 +56,7 @@ func process_side_movement(is_left_pressed, is_right_pressed):
 		else:
 			movement += acceleration(.5)
 		return
-	if not is_left_pressed and not is_right_pressed:
-		stop_player()
+	stop_player()
 
 func process_movement():
 	var is_right_pressed = Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D)
@@ -74,6 +69,8 @@ func _process(delta):
 	position.x += movement * delta
 	$AnimatedSprite.animation = "default"
 
-
 func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
+func hit():
 	queue_free()

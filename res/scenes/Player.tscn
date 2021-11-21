@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://res/img/Player.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -12,21 +12,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24.0692, 21.4473 )
+
 [node name="Player" type="Area2D"]
+position = Vector2( 0.0936432, 0 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 Bullet = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -0.110153, -24.8349, -7.97627, -18.2798, -8.16356, -2.73486, -27.0797, 15.8067, -10.5983, 15.6194, -10.7856, 24.422, 10.1907, 23.8601, 10.0034, 16.3685, 27.0467, 15.8067, 8.6924, -3.10944, 8.87968, -17.7179 )
-
-[node name="Bullet" parent="." instance=ExtResource( 3 )]
-
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.093647, -2.62204 )
+shape = SubResource( 2 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
