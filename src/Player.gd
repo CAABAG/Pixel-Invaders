@@ -42,19 +42,22 @@ func stop_player():
 		return
 
 func process_side_movement(is_left_pressed, is_right_pressed):
-	var is_going_right = movement > 0
-	var is_going_left = movement < 0
+	var at_left_border = position.x <= 0
+	var at_right_border = position.x >= get_viewport_rect().size.x
+	if at_left_border or at_right_border:
+		movement = 0
+	if is_left_pressed and is_right_pressed:
+		stop_player()
+		return
 	if is_left_pressed:
-		if is_going_right:
-			movement -= acceleration(.85)
-		else:
-			movement -= acceleration(.5)
+		if at_left_border:
+			return
+		movement -= acceleration(.3)
 		return
 	if is_right_pressed:
-		if is_going_left:
-			movement += acceleration(.85)
-		else:
-			movement += acceleration(.5)
+		if at_right_border:
+			return
+		movement += acceleration(.3)
 		return
 	stop_player()
 
@@ -68,9 +71,6 @@ func _process(delta):
 	process_shooting()
 	position.x += movement * delta
 	$AnimatedSprite.animation = "default"
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
 
 func hit():
 	queue_free()
