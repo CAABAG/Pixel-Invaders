@@ -9,7 +9,7 @@ export (PackedScene) var Bullet
 export var shooting_interval = 600
 
 func _ready():
-	half_height = get_node("AnimatedSprite").get_sprite_frames().get_frame($AnimatedSprite.animation,0).get_size().y/2
+	half_height = get_node("Sprite").texture.get_size().y/2
 
 func shoot():
 	if OS.get_ticks_msec() - shot_timestamp < shooting_interval:
@@ -80,7 +80,6 @@ func _process(delta):
 	process_movement()
 	process_shooting()
 	position.x += movement * delta
-	$AnimatedSprite.animation = "default"
 
 func hit():
 	is_hit = true
