@@ -4,6 +4,7 @@ var movement = 0
 var speed = 90
 var shot_timestamp = 0
 var half_height
+var is_hit = false
 export (PackedScene) var Bullet
 export var shooting_interval = 600
 
@@ -66,11 +67,20 @@ func process_movement():
 	var is_left_pressed = Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A)
 	process_side_movement(is_left_pressed, is_right_pressed)
 
+func process_hit():
+	if modulate.a > 0:
+		modulate.a -= 0.05
+		return
+	queue_free()
+
 func _process(delta):
+	if is_hit:
+		process_hit()
+		return
 	process_movement()
 	process_shooting()
 	position.x += movement * delta
 	$AnimatedSprite.animation = "default"
 
 func hit():
-	queue_free()
+	is_hit = true
