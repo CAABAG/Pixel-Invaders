@@ -5,7 +5,7 @@ var speed = 90
 var shot_timestamp = 0
 var half_height
 export (PackedScene) var Bullet
-export var shooting_interval = 200
+export var shooting_interval = 600
 
 func _ready():
 	half_height = get_node("AnimatedSprite").get_sprite_frames().get_frame($AnimatedSprite.animation,0).get_size().y/2

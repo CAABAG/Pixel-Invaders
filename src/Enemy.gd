@@ -12,12 +12,11 @@ var movement = 0
 var shot_timer = Timer.new()
 var min_x_pos
 var max_x_pos
+var is_vulnurable = true
 
 func _ready():
-	var screen_size = get_viewport_rect().size
-	min_x_pos = screen_size.x/2 - swing_range
-	max_x_pos = screen_size.x/2 + swing_range
-	position.x = (min_x_pos + max_x_pos)/2
+	min_x_pos = position.x - swing_range
+	max_x_pos = position.x + swing_range
 	add_child(shot_timer)
 	shot_timer.connect("timeout", self, "_shoot")
 	randomize()
@@ -60,4 +59,5 @@ func _process(delta):
 	$AnimatedSprite.animation = "default"
 
 func hit():
-	queue_free()
+	if is_vulnurable:
+		queue_free()
