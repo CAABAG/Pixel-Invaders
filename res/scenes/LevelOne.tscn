@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://res/scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://res/scenes/LevelOne.gd" type="Script" id=2]
+
+[node name="LevelOne" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Enemy" parent="." groups=[
+"aliens",
+] instance=ExtResource( 1 )]
+position = Vector2( 210, 100 )
+
+[node name="Enemy2" parent="." groups=[
+"aliens",
+] instance=ExtResource( 1 )]
+position = Vector2( 320, 200 )
+
+[node name="Enemy3" parent="." groups=[
+"aliens",
+] instance=ExtResource( 1 )]
+position = Vector2( 440, 100 )
+
+[node name="Enemy4" parent="." groups=[
+"aliens",
+] instance=ExtResource( 1 )]
+position = Vector2( 100, 200 )
+
+[node name="Enemy5" parent="." groups=[
+"aliens",
+] instance=ExtResource( 1 )]
+position = Vector2( 540, 200 )
