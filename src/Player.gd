@@ -5,11 +5,13 @@ var speed = 90
 var shot_timestamp = 0
 var half_height
 var is_hit = false
+var is_loading = true
 export (PackedScene) var Bullet
 export var shooting_interval = 600
 
 func _ready():
 	half_height = get_node("Sprite").texture.get_size().y/2
+	modulate.a = 0
 
 func shoot():
 	if OS.get_ticks_msec() - shot_timestamp < shooting_interval:
@@ -74,12 +76,21 @@ func process_hit():
 	queue_free()
 
 func _process(delta):
+	if is_loading:
+		loadSprite()
+		return
 	if is_hit:
 		process_hit()
 		return
 	process_movement()
 	process_shooting()
 	position.x += movement * delta
+
+func loadSprite():
+	modulate.a += 0.01
+	if modulate.a > 1:
+		modulate.a = 1
+		is_loading = false
 
 func hit():
 	is_hit = true
