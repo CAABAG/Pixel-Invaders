@@ -13,6 +13,7 @@ var shot_timer = Timer.new()
 var min_x_pos
 var max_x_pos
 var is_vulnurable = true
+var is_hit = false
 
 func _ready():
 	min_x_pos = position.x - swing_range
@@ -54,10 +55,17 @@ func swing():
 			direction = -1
 
 func _process(delta):
+	if is_hit:
+		process_hit()
 	swing()
 	position.x += movement * delta
-	$AnimatedSprite.animation = "default"
+
+func process_hit():
+	if is_vulnurable:
+		if modulate.a > 0:
+			modulate.a -= 0.05
+			return
+		queue_free()
 
 func hit():
-	if is_vulnurable:
-		queue_free()
+	is_hit = true
