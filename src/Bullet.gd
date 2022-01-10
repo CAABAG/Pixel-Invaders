@@ -2,6 +2,7 @@ extends Area2D
 
 var is_going_up
 var speed = 500
+var score = 10
 
 func _draw():
 	draw_circle(Vector2(0,0), 5, Color.cadetblue)
@@ -22,7 +23,7 @@ func _on_Bullet_area_entered(area):
 	if area.is_in_group("aliens"):
 		if is_going_up == true:
 			area.hit()
-			get_tree().get_root().get_node("Main").score += 100
+			get_tree().get_root().get_node("Main").score += score
 			queue_free()
 	elif area.is_in_group("player"):
 		if is_going_up == false:
