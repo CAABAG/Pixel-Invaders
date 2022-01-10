@@ -68,4 +68,5 @@ func process_hit():
 		queue_free()
 
 func hit():
-	is_hit = true
+	if is_vulnurable:
+		is_hit = true
