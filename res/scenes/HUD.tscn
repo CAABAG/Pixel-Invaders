@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/HUD.gd" type="Script" id=1]
 [ext_resource path="res://res/fonts/ConnectionII.tres" type="DynamicFont" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 40.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -17,3 +25,30 @@ custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 112.6, -90.6606 )
+amount = 100
+lifetime = 4.1
+preprocess = 10.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
+local_coords = false
+process_material = SubResource( 1 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 320.255, -90.6606 )
+amount = 100
+lifetime = 4.1
+preprocess = 10.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
+local_coords = false
+process_material = SubResource( 1 )
+
+[node name="Particles2D3" type="Particles2D" parent="."]
+position = Vector2( 528.969, -89.6011 )
+amount = 100
+lifetime = 4.1
+preprocess = 10.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
+local_coords = false
+process_material = SubResource( 1 )

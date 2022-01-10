@@ -5,7 +5,7 @@ var speed = 500
 var score = 10
 
 func _draw():
-	draw_circle(Vector2(0,0), 5, Color.cadetblue)
+	draw_circle(Vector2(0,0), 5, Color.crimson)
 
 func _ready():
 	update()
