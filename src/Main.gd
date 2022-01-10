@@ -3,9 +3,11 @@ extends Node2D
 var score = 0
 var level_one = preload("res://res/scenes/LevelOne.tscn")
 var level_two = preload("res://res/scenes/LevelTwo.tscn")
+var hud = preload("res://res/scenes/HUD.tscn")
 var current_scene
 
 func _ready():
+	add_child(hud.instance())
 	add_child(level_one.instance())
 	current_scene = "level_one"
 
