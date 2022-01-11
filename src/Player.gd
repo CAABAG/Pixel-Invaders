@@ -94,3 +94,4 @@ func loadSprite():
 
 func hit():
 	is_hit = true
+	$Explosion.play()

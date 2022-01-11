@@ -7,8 +7,9 @@ var score = 10
 func _draw():
 	draw_circle(Vector2(0,0), 5, Color.crimson)
 
-func _ready():
-	update()
+#func _ready():
+#	update()
+#	$ShootingBlast.play()
 
 func _physics_process(delta):
 	if is_going_up:
