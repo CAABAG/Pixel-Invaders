@@ -69,4 +69,5 @@ func process_hit():
 
 func hit():
 	if is_vulnurable:
+		$Explosion.play()
 		is_hit = true
