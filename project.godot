@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Pixel-Invaders"
+run/main_scene="res://res/scenes/Main.tscn"
 config/icon="res://res/img/icon.png"
 
 [display]

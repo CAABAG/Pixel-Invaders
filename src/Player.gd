@@ -12,6 +12,7 @@ export var shooting_interval = 600
 func _ready():
 	half_height = get_node("Sprite").texture.get_size().y/2
 	modulate.a = 0
+	start(Vector2(320,700))
 
 func shoot():
 	if OS.get_ticks_msec() - shot_timestamp < shooting_interval:
@@ -74,6 +75,8 @@ func process_hit():
 		modulate.a -= 0.05
 		return
 	queue_free()
+	var main = get_tree().get_root().get_node("Main")
+	main.status = main.STOP_GAME
 
 func _process(delta):
 	if is_loading:
@@ -85,6 +88,10 @@ func _process(delta):
 	process_movement()
 	process_shooting()
 	position.x += movement * delta
+
+func start(pos):
+	position = pos
+	show()
 
 func loadSprite():
 	modulate.a += 0.01
