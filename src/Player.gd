@@ -91,7 +91,6 @@ func _process(delta):
 
 func start(pos):
 	position = pos
-	show()
 
 func loadSprite():
 	modulate.a += 0.01
