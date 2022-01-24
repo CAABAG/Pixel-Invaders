@@ -1,25 +1,46 @@
 extends Node2D
 
+enum {START_GAME, STOP_GAME, IDLE}
+
 var score = 0
+var status = START_GAME
+
 var level_one = preload("res://res/scenes/LevelOne.tscn")
 var level_two = preload("res://res/scenes/LevelTwo.tscn")
-var hud = preload("res://res/scenes/HUD.tscn")
+var player = preload("res://res/scenes/Player.tscn")
+
 var current_scene
 
 func _ready():
-	add_child(hud.instance())
-	add_child(level_one.instance())
-	current_scene = "level_one"
+	start()
+
+func start():
+	current_scene = level_one
+	add_child(current_scene.instance())
+	add_child(player.instance())
+	get_node("Player").add_to_group("player")
+	$Music.play()
+	status = IDLE
+
+func run_game_over():
+	for child in get_children():
+		if child is ColorRect or child is AudioStreamPlayer:
+			continue
+		child.is_game_over = true
+	$Music.stop()
+	status = IDLE
 
 func _process(_delta):
-	for child in get_children():
-		if not is_instance_valid(child):
-			remove_child(child)
+	if status == START_GAME:
+		start()
+		return
+	if status == STOP_GAME:
+		run_game_over()
+		return
 
 func swap_levels():
-	if current_scene == "level_one":
-		add_child(level_two.instance())
-		current_scene = "level_two"
+	if current_scene == level_one:
+		current_scene = level_two
 	else:
-		add_child(level_one.instance())
-		current_scene = "level_one"
+		current_scene = level_one
+	add_child(current_scene.instance())
